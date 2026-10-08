@@ -4,6 +4,7 @@ import { rotaSobre } from './routes/sobre.js';
 import { rotaAdmin } from './routes/admin.js';
 import { rotaAntigo } from './routes/antigo.js';
 import { rotaBusca } from './routes/search.js';
+import { rotaContato } from './routes/contato.js';
 
 const servidor = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host ?? 'localhost'}`);
@@ -22,6 +23,8 @@ const servidor = http.createServer((req, res) => {
     rotaBusca(req, res, url);
   } else if (url.pathname === '/admin') {
     rotaAdmin(req, res);
+  } else if (url.pathname === '/contato') {
+    rotaContato(req, res);
   } else {
     res.writeHead(404, {
       'Content-Type': 'text/html; charset=utf-8'
