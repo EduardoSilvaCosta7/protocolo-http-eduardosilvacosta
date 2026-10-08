@@ -2,6 +2,7 @@ import http from 'node:http';
 import { rotaInicio } from './routes/home.js';
 import { rotaSobre } from './routes/sobre.js';
 import { rotaAdmin } from './routes/admin.js';
+import { rotaAntigo } from './routes/antigo.js';
 
 const servidor = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host ?? 'localhost'}`);
@@ -14,6 +15,8 @@ const servidor = http.createServer((req, res) => {
     rotaInicio(req, res);
   } else if (url.pathname === '/sobre') {
     rotaSobre(req, res);
+  } else if (url.pathname === '/antigo') {
+    rotaAntigo(req, res);
   } else if (url.pathname === '/admin') {
     rotaAdmin(req, res);
   } else {
